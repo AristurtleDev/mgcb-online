@@ -1,0 +1,91 @@
+@page
+@model TexturePageModel
+@{
+    ViewData["Title"] = "Texture Builder";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Texture Builder</h1>
+    <p>Build image files</p>
+    <div class="alert alert-info">
+        <p>Your files uploaded are immediately deleted after building content and not kept on the server</p>
+    </div>
+</div>
+
+@if(Model.Failed)
+{
+    <div class="alert alert-danger">
+        <p>Your content failed to build, see the following output:</p>
+            @foreach(string line in Model.Output)
+            {
+                <span>@line</span><br/>
+            }
+    </div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Form.File" class="form-label"></label>
+        <input asp-for="Form.File" class="form-control" accept=".bmp,.cut,.dds,.g3,.hdr,.gif,.ico,.iff,.jbg,.jbig,.jng,.jpg,.jpeg,.jpe,.jif,.jfif,.jfi,.jp2,.j2k,.jpf,.jpx,.jpm,.mj2,.jxr,.hdp,.wdp,.koa,.gg,.pcd,.mng,.pcx,.pbm,.pgm,.ppm,.pnm,.pfm,.png,.pict,.pct,.pic,.psd,.3fr,.ari,.arw,.bay,.crw,.cr2,.cap,.dcs,.dcr,.dng,.drf,.eip,.erf,.fff,.iiq,.k25,.kdc,.mdc,.mef,.mos,.mrw,.nef,.nrw,.obm,.orf,.pef,.ptx,.pxn,.r3d,.raf,.raw,.rwl,.rw2,.rwz,.sr2,.srf,.srw,.x3f,.ras,.sun,.sgi,.rgba,.bw,.int,.inta,.tga,.tiff,.tif,.wbmp,.webp,.xbm,.xpm"/>
+        <span asp-validation-for="Form.File" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.Platform" class="form-label"></label>
+        <select asp-for="Form.Platform" asp-items="Html.GetEnumSelectList<Platform>()" class="form-control">
+        </select>
+        <span asp-validation-for="Form.Platform" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.GraphicsProfile" class="form-label"></label>
+        <select asp-for="Form.GraphicsProfile" asp-items="Html.GetEnumSelectList<GraphicsProfile>()" class="form-control"></select>
+        <span asp-validation-for="Form.GraphicsProfile" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.ColorKeyColor" class="form-label"></label>
+        <input type="color" asp-for="Form.ColorKeyColor" class="form-control form-control-color" value="#ff00ff"/>
+    </div>    
+
+    <div class="mb-3">
+        <input asp-for="Form.ColorKeyEnabled" class="form-check-input"/>
+        <label asp-for="Form.ColorKeyEnabled" class="form-check-label"></label>
+    </div>    
+
+
+    <div class="mb-3">
+        <input asp-for="Form.GenerateMipmaps" class="form-check-input"/>
+        <label asp-for="Form.GenerateMipmaps" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.PremultiplyAlpha" class="form-check-input"/>
+        <label asp-for="Form.PremultiplyAlpha" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.ResizeToPowerOfTwo" class="form-check-input"/>
+        <label asp-for="Form.ResizeToPowerOfTwo" class="form-check-label"></label>
+    </div>            
+
+    <div class="mb-3">
+        <input asp-for="Form.MakeSquare" class="form-check-input"/>
+        <label asp-for="Form.MakeSquare" class="form-check-label"></label>
+    </div>            
+
+    <div class="mb-3">
+        <label asp-for="Form.TextureFormat" class="form-label"></label>
+        <select asp-for="Form.TextureFormat" asp-items="Html.GetEnumSelectList<TextureFormat>()" class="form-control"></select>
+        <span asp-validation-for="Form.TextureFormat" class="text-danger" />
+    </div>    
+
+
+    <button type="submit" class="btn btn-primary">Build XNB</button>
+</form>
+
+@section scripts {
+<partial name="_ValidationScriptsPartial" />
+}

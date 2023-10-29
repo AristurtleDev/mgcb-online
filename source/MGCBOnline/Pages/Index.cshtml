@@ -1,0 +1,163 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Online MonoGame Content Builder</h1>
+    <p>This is an online monogame content builder for those that can't build content due to the current Mac M1/M2
+        incompatiability.
+    <p>
+    <h2>Choose Content Type To Build</h2>
+    <div class="alert alert-info">
+        <p>Your files uploaded are immediately deleted after building content and not kept on the server</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/document-chart-bar.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Effect Importer</h3>
+                <p class="card-text">Build .fx effect files</p>
+                <a asp-page="/effect" class="btn btn-primary w-100 mt-auto">Effect Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/home-modern.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">FBX Importer</h3>
+                <p class="card-text">Build .fbx model files</p>
+                <a href="/fbx" class="btn btn-primary w-100 mt-auto">FBX Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/chat-bubble-bottom-center-text.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Sprite Font Importer</h3>
+                <p class="card-text">Build .spritefont files</p>
+                <a href="/spritefont" class="btn btn-primary w-100 mt-auto">SpriteFont Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/film.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">H.264 Importer</h3>
+                <p class="card-text">Build H.264 encoded video files</p>
+                <a href="h264" class="btn btn-primary w-100 mt-auto">H.264 Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/musical-note.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Mp3 Importer</h3>
+                <p class="card-text">Build Mp3 encoded audio files</p>
+                <a href="/mp3" class="btn btn-primary w-100 mt-auto">Mp3 Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/musical-note.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Ogg Importer</h3>
+                <p class="card-text">Build Ogg encoded audio files</p>
+                <a href="/ogg" class="btn btn-primary w-100 mt-auto">Ogg Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/home-modern.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Open Asset Import Library Importer</h3>
+                <p class="card-text">Build Open Asset Import Library model files</p>
+                <a href="openassetimportlibrary" class="btn btn-primary w-100 mt-auto">Open Asset Import Library Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/photo.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Texture Importer</h3>
+                <p class="card-text">Build image files</p>
+                <a href="texture" class="btn btn-primary w-100 mt-auto">Texture Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/musical-note.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Wav Importer</h3>
+                <p class="card-text">Build WAV encoded audio files</p>
+                <a href="/wav" class="btn btn-primary w-100 mt-auto">Wav Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/musical-note.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Wma Importer</h3>
+                <p class="card-text">Build WMA encoded audio files</p>
+                <a href="/wma" class="btn btn-primary w-100 mt-auto">Wma Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/film.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Wmv Importer</h3>
+                <p class="card-text">Build WMV encoded video files</p>
+                <a href="/wmv" class="btn btn-primary w-100 mt-auto">Wma Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/home-modern.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">X Importer</h3>
+                <p class="card-text">Build .x model files</p>
+                <a href="/x" class="btn btn-primary w-100 mt-auto">X Importer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4 d-flex align-items-stretch">
+        <div class="card" style="width: 100%; margin-bottom:2rem;">
+            <img src="~/images/document-text.svg" class="card-img-top">
+            <div class="card-body d-flex flex-column">
+                <h3 class="card-title">XML Importer</h3>
+                <p class="card-text">Build XML files</p>
+                <a href="/xml" class="btn btn-primary w-100 mt-auto">XML Importer</a>
+            </div>
+        </div>
+    </div>
+</div>

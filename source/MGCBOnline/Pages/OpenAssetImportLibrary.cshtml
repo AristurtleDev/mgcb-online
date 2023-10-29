@@ -1,0 +1,130 @@
+@page
+@model OpenAssetImportLibraryPageModel
+@{
+    ViewData["Title"] = "Open Asset Import Library Builder";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Open Asset Import Library Builder</h1>
+    <p>Build open asset files</p>
+    <div class="alert alert-info">
+        <p>Your files uploaded are immediately deleted after building content and not kept on the server</p>
+    </div>
+</div>
+
+@if(Model.Failed)
+{
+    <div class="alert alert-danger">
+        <p>Your content failed to build, see the following output:</p>
+            @foreach(string line in Model.Output)
+            {
+                <span>@line</span><br/>
+            }
+    </div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Form.File" class="form-label"></label>
+        <input asp-for="Form.File" class="form-control" accept=".ase,.obj,.ifc,.xgl,.zgl,.ply,.dxf,.lwo,.lws,.lxo,.stl,.ac,.ms3d,.cob,.scn,.bvh,.csm,.irrmesh,.irr,.mdl,.md2,.md3,.pk3,.mdc,.md5,.smd,.vta,.ogex,.3d,.b3d,.q3d,.q3s,.nff,.off,.ter,.hmp,.ndo"/>
+        <span asp-validation-for="Form.File" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.Platform" class="form-label"></label>
+        <select asp-for="Form.Platform" asp-items="Html.GetEnumSelectList<Platform>()" class="form-control">
+        </select>
+        <span asp-validation-for="Form.Platform" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.GraphicsProfile" class="form-label"></label>
+        <select asp-for="Form.GraphicsProfile" asp-items="Html.GetEnumSelectList<GraphicsProfile>()" class="form-control"></select>
+        <span asp-validation-for="Form.GraphicsProfile" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Form.ColorKeyColor" class="form-label"></label>
+        <input type="color" asp-for="Form.ColorKeyColor" class="form-control form-control-color"/>
+    </div>    
+
+    <div class="mb-3">
+        <input asp-for="Form.ColorKeyEnabled" class="form-check-input"/>
+        <label asp-for="Form.ColorKeyEnabled" class="form-check-label"></label>
+    </div>    
+
+    <div class="mb-3">
+        <label asp-for="Form.DefaultEffect" class="form-label"></label>
+        <select asp-for="Form.DefaultEffect" asp-items="Html.GetEnumSelectList<DefaultEffect>()" class="form-control"></select>
+        <span asp-validation-for="Form.DefaultEffect" class="text-danger" />
+    </div>
+
+    <div class="mb-3">
+        <input asp-for="Form.GenerateMipMaps" class="form-check-input"/>
+        <label asp-for="Form.GenerateMipMaps" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.GenerateTangentFrames" class="form-check-input"/>
+        <label asp-for="Form.GenerateTangentFrames" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.PremultiplyTextureAlpha" class="form-check-input"/>
+        <label asp-for="Form.PremultiplyTextureAlpha" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.PremultiplyVertextColors" class="form-check-input"/>
+        <label asp-for="Form.PremultiplyVertextColors" class="form-check-label"></label>
+    </div>        
+
+    <div class="mb-3">
+        <input asp-for="Form.ResizeTextureToPowerOfTwo" class="form-check-input"/>
+        <label asp-for="Form.ResizeTextureToPowerOfTwo" class="form-check-label"></label>
+    </div>            
+
+    <div class="mb-3">
+        <label asp-for="Form.RotationX" class="form-label"></label>
+        <input asp-for="Form.RotationX" class="form-control"/>
+        <span asp-validation-for="Form.RotationX" class="text-danger" />
+    </div>                
+
+    <div class="mb-3">
+        <label asp-for="Form.RotationY" class="form-label"></label>
+        <input asp-for="Form.RotationY" class="form-control"/>
+        <span asp-validation-for="Form.RotationY" class="text-danger" />
+    </div>                    
+
+     <div class="mb-3">
+        <label asp-for="Form.RotationZ" class="form-label"></label>
+        <input asp-for="Form.RotationZ" class="form-control"/>
+        <span asp-validation-for="Form.RotationZ" class="text-danger" />
+    </div>                
+
+    <div class="mb-3">
+        <label asp-for="Form.Scale" class="form-label"></label>
+        <input asp-for="Form.Scale" class="form-control"/>
+        <span asp-validation-for="Form.Scale" class="text-danger" />
+    </div>                
+
+    <div class="mb-3">
+        <input asp-for="Form.SwapWindingOrder" class="form-check-input"/>
+        <label asp-for="Form.SwapWindingOrder" class="form-check-label"></label>
+    </div>                    
+
+    <div class="mb-3">
+        <label asp-for="Form.TextureFormat" class="form-label"></label>
+        <select asp-for="Form.TextureFormat" asp-items="Html.GetEnumSelectList<TextureFormat>()" class="form-control"></select>
+        <span asp-validation-for="Form.TextureFormat" class="text-danger" />
+    </div>    
+
+
+    <button type="submit" class="btn btn-primary">Build XNB</button>
+</form>
+
+@section scripts {
+<partial name="_ValidationScriptsPartial" />
+}
